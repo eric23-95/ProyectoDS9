@@ -1,0 +1,43 @@
+
+{{#if carrito}}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{/if}}
+
+    {{#each carrito}}
+       <tr>
+      <th scope="row">1</th>
+      <form action="/delete-product-carrito/{{_id}}?_method=DELETE" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+        <td>{{ nombre }}</td>
+        <td>{{ precio }}</td>
+        <td>
+        <button class="btn btn-danger btn-small" type="submit">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        </td>
+      </form>
+      </tr>
+
+      {{else}}
+      <div class="card mx-auto">
+            <div class="card-body">
+                <p class="lead"> <h2> El Carrito esta Vacio </h2></p>
+                <a href="/" class="btn btn-success"> ir al Inicio</a>
+            </div>
+        </div>
+    {{/each}}
+
+  </tbody>
+</table>
+{{#if carrito}}
+  <h2> Total: $</h2>
+  <a href="" class="btn btn-success"> comprar</a>
+{{/if}}
